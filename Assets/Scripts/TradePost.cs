@@ -6,6 +6,7 @@ public class TradePost : MonoBehaviour
 {
     [SerializeField] private Resource[] _resourcesToSell;
     [SerializeField] private TradePostStorage _tradePostStorage;
+    [SerializeField] private ImportantSceneObjects _importantSceneObjects;
     [SerializeField] private float _sellResourcesDelay;
 
     private float _elapsedTime = 0;
@@ -55,8 +56,7 @@ public class TradePost : MonoBehaviour
             throw new System.Exception("Can't sell resources because trade post's storage is empty");
 
         int sellPrice = _tradePostStorage.PriceOfStoredResources;
-
-        Debug.Log(sellPrice);
+        _importantSceneObjects.PlayersMoney.AddMoney(sellPrice);
 
         _tradePostStorage.DestroyResourcesFromStorage();
     }

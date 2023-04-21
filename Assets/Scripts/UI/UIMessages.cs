@@ -4,22 +4,22 @@ using UnityEngine;
 public class UIMessages : MonoBehaviour
 {
     [SerializeField] private PopupWindow _popupWindow;
-    [SerializeField] private ProductionBuildingsGroup _productionBuildingsGroup;
+    [SerializeField] private ImportantSceneObjects _importantSceneObjects;
 
     private Queue<string> _messagesQueue = new Queue<string>();
 
     private void OnEnable()
     {
-        _productionBuildingsGroup.FullOutputStorageProductionStopped += OnOutputStorageFilled;
-        _productionBuildingsGroup.EmptyInputStorageProductionStopped += OnInputStorageFilled;
+        _importantSceneObjects.ProductionBuildingGroup.FullOutputStorageProductionStopped += OnOutputStorageFilled;
+        _importantSceneObjects.ProductionBuildingGroup.EmptyInputStorageProductionStopped += OnInputStorageFilled;
 
         _popupWindow.WindowClosed += OnPopupWindowClosed;
     }
 
     private void OnDisable()
     {
-        _productionBuildingsGroup.FullOutputStorageProductionStopped -= OnOutputStorageFilled;
-        _productionBuildingsGroup.EmptyInputStorageProductionStopped -= OnInputStorageFilled;
+        _importantSceneObjects.ProductionBuildingGroup.FullOutputStorageProductionStopped -= OnOutputStorageFilled;
+        _importantSceneObjects.ProductionBuildingGroup.EmptyInputStorageProductionStopped -= OnInputStorageFilled;
 
         _popupWindow.WindowClosed -= OnPopupWindowClosed;
     }
