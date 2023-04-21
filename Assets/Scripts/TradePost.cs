@@ -9,6 +9,7 @@ public class TradePost : MonoBehaviour
     [SerializeField] private float _sellResourcesDelay;
 
     private float _elapsedTime = 0;
+    private bool _sellCoroutineIsRunning = false;
 
     public Resource[] ResourcesToSell => _resourcesToSell;
 
@@ -27,7 +28,7 @@ public class TradePost : MonoBehaviour
 
     private void OnResourceAddedToStorage()
     {
-        if (_elapsedTime <= 0)
+        if (_sellCoroutineIsRunning == false)
             StartCoroutine(SellResourcesAfterDelay(_sellResourcesDelay));
         else
             _elapsedTime = 0;
@@ -35,6 +36,7 @@ public class TradePost : MonoBehaviour
 
     private IEnumerator SellResourcesAfterDelay(float delay)
     {
+        _sellCoroutineIsRunning = true;
         _elapsedTime = 0;
 
         while(_elapsedTime < delay)
@@ -44,6 +46,7 @@ public class TradePost : MonoBehaviour
         }
 
         SellResources();
+        _sellCoroutineIsRunning = false;
     }
 
     private void SellResources()
