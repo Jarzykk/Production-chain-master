@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ResourceStack : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ResourceStack : MonoBehaviour
     public bool StaskIsFull => _resourcePositions.Length <= _resources.Count;
     public bool StackIsEmpty => _resources.Count == 0;
 
+    public event UnityAction ResourceAdded;
+
     public void TakeResource(Resource resource)
     {
         if (StaskIsFull)
@@ -18,6 +21,8 @@ public class ResourceStack : MonoBehaviour
 
         resource.MoveToPoaition(_resourcePositions[_resources.Count]);
         _resources.Add(resource);
+
+        ResourceAdded?.Invoke();
     }
 
     public Resource GiveLastAddedResource()
@@ -48,6 +53,18 @@ public class ResourceStack : MonoBehaviour
         return false;
     }
 
+    public int GetPriceOfAllStoredResources()
+    {
+        int price = 0;
+
+        foreach (var resources in _resources)
+        {
+            price += resources.ResourcePrice;
+        }
+
+        return price;
+    }
+
     public Resource GiveLastAddedResourceByName(string resourceName)
     {
         for (int i = _lastStoredResourceIndex; i >= 0; i--)
@@ -63,5 +80,15 @@ public class ResourceStack : MonoBehaviour
         }
 
         throw new System.Exception("There is no resource you're trying to get");
+    }
+
+    public void DestroyResourcesFromStack()
+    {
+        foreach (var resource in _resources)
+        {
+            Destroy(resource.gameObject);
+        }
+
+        _resources.Clear();
     }
 }

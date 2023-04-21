@@ -4,13 +4,57 @@ using UnityEngine;
 
 public class TradePost : MonoBehaviour
 {
-    [Header("Resources")]
     [SerializeField] private Resource[] _resourcesToSell;
+    [SerializeField] private TradePostStorage _tradePostStorage;
+    [SerializeField] private float _sellResourcesDelay;
 
-    [Header("Prices")]
-    [SerializeField] private int _haySellPrice = 1;
-    [SerializeField] private int _wollSellPrice = 2;
-    [SerializeField] private int _toyBoxSellPrice = 3;
+    private float _elapsedTime = 0;
 
     public Resource[] ResourcesToSell => _resourcesToSell;
+
+    private void OnEnable()
+    {
+        _tradePostStorage.ResourceAdded += OnResourceAddedToStorage;
+
+        if (_sellResourcesDelay < 1)
+            throw new System.Exception("_sellResourcesDelay must be equal or more than 1");
+    }
+
+    private void OnDisable()
+    {
+        _tradePostStorage.ResourceAdded -= OnResourceAddedToStorage;
+    }
+
+    private void OnResourceAddedToStorage()
+    {
+        if (_elapsedTime <= 0)
+            StartCoroutine(SellResourcesAfterDelay(_sellResourcesDelay));
+        else
+            _elapsedTime = 0;
+    }
+
+    private IEnumerator SellResourcesAfterDelay(float delay)
+    {
+        _elapsedTime = 0;
+
+        while(_elapsedTime < delay)
+        {
+            _elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        SellResources();
+    }
+
+    private void SellResources()
+    {
+        if (_tradePostStorage.StorageIsEmpty == true)
+            throw new System.Exception("Can't sell resources because trade post's storage is empty");
+
+        int sellPrice = _tradePostStorage.PriceOfStoredResources;
+
+        Debug.Log(sellPrice);
+
+        _tradePostStorage.DestroyResourcesFromStorage();
+    }
 }

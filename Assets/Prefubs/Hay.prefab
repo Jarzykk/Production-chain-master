@@ -142,4 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceName: Hay
+  _resourcePrice: 1
   _movement: {fileID: 8200149426742322880}

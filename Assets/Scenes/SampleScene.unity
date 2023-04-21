@@ -1740,9 +1740,8 @@ MonoBehaviour:
   - {fileID: 1315322782524399897, guid: 5a1a05979480f5e4ebe5422298a6ea2a, type: 3}
   - {fileID: 6663099256545953352, guid: e3a37d60e8fbabe4bbd31dbd34f7d22a, type: 3}
   - {fileID: 3323037850422888441, guid: d5c01dbc9bde49340946edabf4019950, type: 3}
-  _haySellPrice: 1
-  _wollSellPrice: 2
-  _toyBoxSellPrice: 3
+  _tradePostStorage: {fileID: 7421616797787218629}
+  _sellResourcesDelay: 1
 --- !u!1001 &2012133954
 PrefabInstance:
   m_ObjectHideFlags: 0

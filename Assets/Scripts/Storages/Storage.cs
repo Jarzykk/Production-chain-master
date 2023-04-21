@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Storage : MonoBehaviour
 {
@@ -9,6 +10,19 @@ public class Storage : MonoBehaviour
 
     public bool FreeSpaceAvailible => _resourceStack.StaskIsFull == false;
     public bool StorageIsEmpty => _resourceStack.StackIsEmpty;
+    public int PriceOfStoredResources => _resourceStack.GetPriceOfAllStoredResources();
+
+    public event UnityAction ResourceAdded;
+
+    private void OnEnable()
+    {
+        _resourceStack.ResourceAdded += OnResourceAddedToStack;
+    }
+
+    private void OnDisable()
+    {
+        _resourceStack.ResourceAdded -= OnResourceAddedToStack;
+    }
 
     public bool TryTakeResource(Resource resource)
     {
@@ -67,24 +81,13 @@ public class Storage : MonoBehaviour
         _resourcesToStore.Add(resource);
     }
 
-    public int GetPriceOfAllStoredResources()
-    {
-        int price = 0;
-
-        foreach (var resources in _resourcesToStore)
-        {
-            price += resources.ResourcePrice;
-        }
-
-        return price;
-    }
-
     public void DestroyResourcesFromStorage()
     {
-        foreach (var resource in _resourcesToStore)
-        {
-            _resourcesToStore.Remove(resource);
-            Destroy(resource);
-        }
+        _resourceStack.DestroyResourcesFromStack();
+    }
+
+    private void OnResourceAddedToStack()
+    {
+        ResourceAdded?.Invoke();
     }
 }

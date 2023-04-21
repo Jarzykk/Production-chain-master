@@ -142,4 +142,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _resourceName: Toy box
+  _resourcePrice: 10
   _movement: {fileID: 6662894582784777457}
