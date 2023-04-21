@@ -4,9 +4,11 @@ using UnityEngine;
 public class Resource : MonoBehaviour
 {
     [SerializeField] private string _resourceName;
+    [SerializeField] private int _resourcePrice = 1;
     [SerializeField] private ResourceLerpMovement _movement;
 
     public string ResourceName => _resourceName;
+    public int ResourcePrice => _resourcePrice;
 
     private void OnEnable()
     {
