@@ -66,4 +66,25 @@ public class Storage : MonoBehaviour
     {
         _resourcesToStore.Add(resource);
     }
+
+    public int GetPriceOfAllStoredResources()
+    {
+        int price = 0;
+
+        foreach (var resources in _resourcesToStore)
+        {
+            price += resources.ResourcePrice;
+        }
+
+        return price;
+    }
+
+    public void DestroyResourcesFromStorage()
+    {
+        foreach (var resource in _resourcesToStore)
+        {
+            _resourcesToStore.Remove(resource);
+            Destroy(resource);
+        }
+    }
 }

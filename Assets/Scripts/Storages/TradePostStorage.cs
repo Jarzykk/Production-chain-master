@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TradePostStorage : Storage
+public class TradePostStorage : InputStorage
 {
     [SerializeField] private TradePost _tradePost;
 
