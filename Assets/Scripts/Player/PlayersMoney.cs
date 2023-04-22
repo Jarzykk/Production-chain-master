@@ -14,4 +14,15 @@ public class PlayersMoney : MonoBehaviour
         _moneyAmount += amount;
         MoneyAmountChanged?.Invoke(_moneyAmount);
     }
+
+    public int GiveMoney(int amountToGive)
+    {
+        if (amountToGive > _moneyAmount)
+            throw new System.Exception("Not enough money");
+
+        _moneyAmount -= amountToGive;
+        MoneyAmountChanged?.Invoke(_moneyAmount);
+
+        return amountToGive;
+    }
 }
