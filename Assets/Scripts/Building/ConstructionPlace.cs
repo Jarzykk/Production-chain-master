@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(BoxCollider))]
 public class ConstructionPlace : MonoBehaviour
 {
     [SerializeField] private int _priceToBuild;
@@ -11,6 +12,7 @@ public class ConstructionPlace : MonoBehaviour
     [SerializeField] private Image _priceImage;
     [SerializeField] private ProductionBuillding _buildingToConstract;
 
+    private BoxCollider _boxCollider;
     private int _moneyLeftForConstruction;
     private bool _constructed => _moneyLeftForConstruction == 0;
 
@@ -20,6 +22,9 @@ public class ConstructionPlace : MonoBehaviour
         _moneyLeftForConstruction = _priceToBuild;
 
         _buildingToConstract.gameObject.SetActive(false);
+
+        _boxCollider = gameObject.GetComponent<BoxCollider>();
+        _boxCollider.isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,6 +57,7 @@ public class ConstructionPlace : MonoBehaviour
     {
         _priceText.gameObject.SetActive(false);
         _priceImage.gameObject.SetActive(false);
+        _boxCollider.enabled = false;
 
         _buildingToConstract.gameObject.SetActive(true);
     }
