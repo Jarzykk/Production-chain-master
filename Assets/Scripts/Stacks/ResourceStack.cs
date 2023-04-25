@@ -89,7 +89,6 @@ public class ResourceStack : MonoBehaviour
 
     public List<Resource> GetAllResources()
     {
-        List<Resource> resourcesToSend = _resources;
-        return resourcesToSend;
+        return _resources;
     }
 }
