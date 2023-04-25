@@ -9,6 +9,7 @@ public class ConstructionPlace : MonoBehaviour
     [SerializeField] private int _priceToBuild;
     [SerializeField] private TMP_Text _priceText;
     [SerializeField] private Image _priceImage;
+    [SerializeField] private ProductionBuillding _buildingToConstract;
 
     private int _moneyLeftForConstruction;
     private bool _constructed => _moneyLeftForConstruction == 0;
@@ -17,6 +18,8 @@ public class ConstructionPlace : MonoBehaviour
     {
         _priceText.text = _priceToBuild.ToString();
         _moneyLeftForConstruction = _priceToBuild;
+
+        _buildingToConstract.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,5 +52,7 @@ public class ConstructionPlace : MonoBehaviour
     {
         _priceText.gameObject.SetActive(false);
         _priceImage.gameObject.SetActive(false);
+
+        _buildingToConstract.gameObject.SetActive(true);
     }
 }
