@@ -76,14 +76,19 @@ public class Storage : MonoBehaviour
         return resourcesToStoreNames;
     }
 
+    public List<Resource> GetAllResources()
+    {
+        return _resourceStack.GetAllResources();
+    }
+
     public void AddResourceToStorageList(Resource resource)
     {
         _resourcesToStore.Add(resource);
     }
 
-    public void DestroyResourcesFromStorage()
+    public void RemoveAllResourcesFromStorage()
     {
-        _resourceStack.DestroyResourcesFromStack();
+        _resourceStack.RemoveAllResourcesFromStorage();
     }
 
     private void OnResourceAddedToStack()

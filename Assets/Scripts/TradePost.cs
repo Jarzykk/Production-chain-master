@@ -8,6 +8,7 @@ public class TradePost : MonoBehaviour
     [SerializeField] private TradePostStorage _tradePostStorage;
     [SerializeField] private ImportantSceneObjects _importantSceneObjects;
     [SerializeField] private float _sellResourcesDelay;
+    [SerializeField] private Transform _resourceConsumePosition;
 
     private float _elapsedTime = 0;
     private bool _sellCoroutineIsRunning = false;
@@ -58,6 +59,13 @@ public class TradePost : MonoBehaviour
         int sellPrice = _tradePostStorage.PriceOfStoredResources;
         _importantSceneObjects.PlayersMoney.AddMoney(sellPrice);
 
-        _tradePostStorage.DestroyResourcesFromStorage();
+        var resources = _tradePostStorage.GetAllResources();
+
+        foreach (var resource in resources)
+        {
+            resource.MoveToPoaition(_resourceConsumePosition);
+        }
+
+        _tradePostStorage.RemoveAllResourcesFromStorage();
     }
 }

@@ -1450,7 +1450,7 @@ GameObject:
   - component: {fileID: 798791929}
   - component: {fileID: 798791928}
   m_Layer: 5
-  m_Name: BuildingUI (1)
+  m_Name: ConstructionPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1977,6 +1977,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1d303697fbc97c4782f8e783f3140bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &929244996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929244997}
+  - component: {fileID: 929244998}
+  m_Layer: 0
+  m_Name: ResourceConsumePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &929244997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929244996}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -2.27, y: 3.68, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1998393949}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &929244998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929244996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25590eec9ebf3a74ea30877a3f8113d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &947588444 stripped
@@ -3333,7 +3377,7 @@ GameObject:
   - component: {fileID: 1988768171}
   - component: {fileID: 1988768172}
   m_Layer: 5
-  m_Name: BuildingUI
+  m_Name: ConstructionPlace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3541,6 +3585,7 @@ MonoBehaviour:
   _tradePostStorage: {fileID: 7421616797787218629}
   _importantSceneObjects: {fileID: 1655109032}
   _sellResourcesDelay: 1
+  _resourceConsumePosition: {fileID: 929244997}
 --- !u!1001 &2012133954
 PrefabInstance:
   m_ObjectHideFlags: 0

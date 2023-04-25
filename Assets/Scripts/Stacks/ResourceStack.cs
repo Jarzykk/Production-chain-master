@@ -82,13 +82,14 @@ public class ResourceStack : MonoBehaviour
         throw new System.Exception("There is no resource you're trying to get");
     }
 
-    public void DestroyResourcesFromStack()
+    public void RemoveAllResourcesFromStorage()
     {
-        foreach (var resource in _resources)
-        {
-            Destroy(resource.gameObject);
-        }
-
         _resources.Clear();
+    }
+
+    public List<Resource> GetAllResources()
+    {
+        List<Resource> resourcesToSend = _resources;
+        return resourcesToSend;
     }
 }
