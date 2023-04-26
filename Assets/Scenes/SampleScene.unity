@@ -4265,6 +4265,7 @@ MonoBehaviour:
   _playersMoney: {fileID: 3815553508629606370}
   _playerMovement: {fileID: 3815553508629606364}
   _levelsTimer: {fileID: 231653859}
+  _looseScree: {fileID: 20924104}
   _productionBuildingGroup: {fileID: 1709232196}
 --- !u!4 &1655109033
 Transform:
