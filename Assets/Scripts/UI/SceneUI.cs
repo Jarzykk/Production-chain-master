@@ -8,6 +8,8 @@ public class SceneUI : MonoBehaviour
     [SerializeField] private ImportantSceneObjects _importantSceneObjects;
     [SerializeField] private LooseScreen _looseScreen;
 
+    public ImportantSceneObjects ImportantSceneObjects => _importantSceneObjects;
+
     public event UnityAction ScreenEnabled;
 
     private void OnEnable()

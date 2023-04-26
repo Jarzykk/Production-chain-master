@@ -6,13 +6,14 @@ using UnityEngine;
 public class MoneyUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text _moneyAmountText;
+    [SerializeField] private SceneUI _sceneUI;
     [SerializeField] private ImportantSceneObjects _importantSceneObjects;
+
+    private int _targetMoneyAmount;
 
     private void OnEnable()
     {
         _importantSceneObjects.PlayersMoney.MoneyAmountChanged += ChangeMoneyAmount;
-
-        _moneyAmountText.text = 0.ToString();
     }
 
     private void OnDisable()
@@ -20,8 +21,20 @@ public class MoneyUI : MonoBehaviour
         _importantSceneObjects.PlayersMoney.MoneyAmountChanged -= ChangeMoneyAmount;
     }
 
+    private void Start()
+    {
+        _targetMoneyAmount = _sceneUI.ImportantSceneObjects.LevelsData.TargetMoneyAmount;
+
+        SetInitialMoneyAmount();
+    }
+
     private void ChangeMoneyAmount(int amount)
     {
-        _moneyAmountText.text = amount.ToString();
+        _moneyAmountText.text = $"{amount}/{_targetMoneyAmount}";
+    }
+
+    private void SetInitialMoneyAmount()
+    {
+        _moneyAmountText.text = $"0/{_targetMoneyAmount}";
     }
 }

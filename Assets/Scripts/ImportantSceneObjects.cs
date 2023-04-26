@@ -9,10 +9,12 @@ public class ImportantSceneObjects : MonoBehaviour
     [SerializeField] private LevelsTimer _levelsTimer;
     [SerializeField] private SceneUI _sceneUI;
     [SerializeField] private ProductionBuildingsGroup _productionBuildingGroup;
+    [SerializeField] private LevelsData _levelsData;
 
     public PlayersMoney PlayersMoney => _playersMoney;
     public PlayerMovement PlayerMovement => _playerMovement;
     public LevelsTimer LevelsTimer => _levelsTimer;
     public SceneUI SceneUI => _sceneUI;
     public ProductionBuildingsGroup ProductionBuildingGroup => _productionBuildingGroup;
+    public LevelsData LevelsData => _levelsData;
 }

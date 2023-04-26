@@ -6,21 +6,23 @@ using UnityEngine.Events;
 
 public class LevelsTimer : MonoBehaviour
 {
-    [SerializeField] private float _secondsForMission = 90f;
+    [SerializeField] private SceneUI _sceneUI;
     [SerializeField] private TMP_Text _uiText;
 
     private float _secondsCount;
-
     private int _minutes;
     private int _seconds;
+    private LevelsData _levelsData;
 
     public event UnityAction TimerRanOut;
 
     private void Start()
     {
-        SetMinutesAndSeconds(_secondsForMission);
+        _levelsData = _sceneUI.ImportantSceneObjects.LevelsData;
+
+        SetMinutesAndSeconds(_levelsData.SecondsForLevel);
         ChangeTimerUI(_minutes, _seconds);
-        _secondsCount = _secondsForMission;
+        _secondsCount = _levelsData.SecondsForLevel;
 
         StartCoroutine(TimerCoroutine());
     }
