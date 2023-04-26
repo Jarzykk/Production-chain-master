@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SceneUI : MonoBehaviour
 {
     [SerializeField] private ImportantSceneObjects _importantSceneObjects;
     [SerializeField] private LooseScreen _looseScreen;
+
+    public event UnityAction ScreenEnabled;
 
     private void OnEnable()
     {
@@ -25,5 +28,7 @@ public class SceneUI : MonoBehaviour
     private void EnableLooseScreen()
     {
         _looseScreen.gameObject.SetActive(true);
+
+        ScreenEnabled?.Invoke();
     }
 }

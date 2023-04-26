@@ -11,12 +11,12 @@ public class JoystickDisabler : MonoBehaviour
 
     private void OnEnable()
     {
-        _importantObjects.LooseScreen.LooseScreenAppeared += DisableJoystick;
+        _importantObjects.SceneUI.ScreenEnabled += DisableJoystick;
     }
 
     private void OnDisable()
     {
-        _importantObjects.LooseScreen.LooseScreenAppeared -= DisableJoystick;
+        _importantObjects.SceneUI.ScreenEnabled -= DisableJoystick;
     }
 
     private void Start()
