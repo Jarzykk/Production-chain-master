@@ -7,6 +7,8 @@ public class LevelConditions : MonoBehaviour
 {
     [SerializeField] private ImportantSceneObjects _importamtSceneObjects;
 
+    private bool _playerLoose = false;
+
     public event UnityAction PlayerWon;
     public event UnityAction PlayerLoose;
 
@@ -24,11 +26,13 @@ public class LevelConditions : MonoBehaviour
 
     private void CallOnWinEvent()
     {
-        PlayerWon?.Invoke();
+        if(_playerLoose == false)
+            PlayerWon?.Invoke();
     }
 
     private void CallOnLooseEvent()
     {
+        _playerLoose = true;
         PlayerLoose?.Invoke();
     }
 }

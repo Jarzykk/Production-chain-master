@@ -16,6 +16,16 @@ public class LevelsTimer : MonoBehaviour
 
     public event UnityAction TimerRanOut;
 
+    private void OnEnable()
+    {
+        _sceneUI.ImportantSceneObjects.LevelConditions.PlayerWon += StopTimer;
+    }
+
+    private void OnDisable()
+    {
+        _sceneUI.ImportantSceneObjects.LevelConditions.PlayerWon -= StopTimer;
+    }
+
     private void Start()
     {
         _levelsData = _sceneUI.ImportantSceneObjects.LevelsData;
@@ -60,4 +70,9 @@ public class LevelsTimer : MonoBehaviour
 
         _uiText.text = $"{minutes}:{secondsForUI}";
     }
+
+    private void StopTimer()
+    {
+        StopCoroutine(TimerCoroutine());
+    }    
 }

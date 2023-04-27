@@ -1,26 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LooseScreen : MonoBehaviour
+public abstract class Screen : MonoBehaviour
 {
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _exitButton;
 
-    public event UnityAction LooseScreenAppeared;
-
     private void OnEnable()
     {
-        LooseScreenAppeared?.Invoke();
+        BaseOnEnable();
+    }
 
+    private void OnDisable()
+    {
+        BaseOnDisable();
+    }
+
+    protected void BaseOnEnable()
+    {
         _restartButton.onClick.AddListener(Restart);
         _exitButton.onClick.AddListener(ExitGame);
     }
 
-    private void OnDisable()
+    protected void BaseOnDisable()
     {
         _restartButton.onClick.RemoveListener(Restart);
         _exitButton.onClick.RemoveListener(ExitGame);

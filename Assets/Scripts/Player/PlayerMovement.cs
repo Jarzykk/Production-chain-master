@@ -11,12 +11,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponent<Player>().ImportantSceneObjects.LevelsTimer.TimerRanOut += DisableMovement;
+        GetComponent<Player>().ImportantSceneObjects.SceneUI.ScreenEnabled += DisableMovement;
     }
 
     private void OnDisable()
     {
-        GetComponent<Player>().ImportantSceneObjects.LevelsTimer.TimerRanOut -= DisableMovement;
+        GetComponent<Player>().ImportantSceneObjects.SceneUI.ScreenEnabled -= DisableMovement;
     }
 
     private void Start()
