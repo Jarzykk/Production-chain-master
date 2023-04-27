@@ -1,23 +1,22 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private FixedJoystick _joystick;
     [SerializeField] private float _speed = 3;
-    [SerializeField] private ImportantSceneObjects _importantGameObjects;
 
     private Rigidbody _rigidBody;
     private bool _canMove = true;
 
     private void OnEnable()
     {
-        _importantGameObjects.LevelsTimer.TimerRanOut += DisableMovement;
+        GetComponent<Player>().ImportantSceneObjects.LevelsTimer.TimerRanOut += DisableMovement;
     }
 
     private void OnDisable()
     {
-        _importantGameObjects.LevelsTimer.TimerRanOut -= DisableMovement;
+        GetComponent<Player>().ImportantSceneObjects.LevelsTimer.TimerRanOut -= DisableMovement;
     }
 
     private void Start()

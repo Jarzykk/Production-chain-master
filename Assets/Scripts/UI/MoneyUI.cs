@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -10,15 +8,21 @@ public class MoneyUI : MonoBehaviour
     [SerializeField] private ImportantSceneObjects _importantSceneObjects;
 
     private int _targetMoneyAmount;
+    private PlayersMoney _playersMoney;
+
+    private void Awake()
+    {
+        _playersMoney = _importantSceneObjects.PlayersMoney;
+    }
 
     private void OnEnable()
     {
-        _importantSceneObjects.PlayersMoney.MoneyAmountChanged += ChangeMoneyAmount;
+        _playersMoney.MoneyAmountChanged += ChangeMoneyAmount;
     }
 
     private void OnDisable()
     {
-        _importantSceneObjects.PlayersMoney.MoneyAmountChanged -= ChangeMoneyAmount;
+        _playersMoney.MoneyAmountChanged -= ChangeMoneyAmount;
     }
 
     private void Start()

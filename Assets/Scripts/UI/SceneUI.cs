@@ -14,12 +14,12 @@ public class SceneUI : MonoBehaviour
 
     private void OnEnable()
     {
-        _importantSceneObjects.LevelsTimer.TimerRanOut += EnableLooseScreen;
+        _importantSceneObjects.LevelConditions.PlayerLoose += EnableLooseScreen;
     }
 
     private void OnDisable()
     {
-        _importantSceneObjects.LevelsTimer.TimerRanOut -= EnableLooseScreen;
+        _importantSceneObjects.LevelConditions.PlayerLoose -= EnableLooseScreen;
     }
 
     private void Start()

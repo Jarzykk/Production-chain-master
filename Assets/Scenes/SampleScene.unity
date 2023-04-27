@@ -3752,7 +3752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetMoneyAmount: 100
-  _secondsForLevel: 450
+  _secondsForLevel: 240
 --- !u!4 &1279766173
 Transform:
   m_ObjectHideFlags: 0
@@ -4295,6 +4295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655109033}
   - component: {fileID: 1655109032}
+  - component: {fileID: 1655109034}
   m_Layer: 0
   m_Name: ImportantSceneObjects
   m_TagString: Untagged
@@ -4315,11 +4316,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playersMoney: {fileID: 3815553508629606370}
-  _playerMovement: {fileID: 3815553508629606364}
+  _player: {fileID: 3815553508629606371}
   _levelsTimer: {fileID: 231653859}
   _sceneUI: {fileID: 231653860}
   _productionBuildingGroup: {fileID: 1709232196}
   _levelsData: {fileID: 1279766172}
+  _levelConditions: {fileID: 1655109034}
 --- !u!4 &1655109033
 Transform:
   m_ObjectHideFlags: 0
@@ -4335,6 +4337,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1655109034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655109031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8650b3b88e8152e449ab389e8d16cac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _importamtSceneObjects: {fileID: 1655109032}
 --- !u!1 &1699175500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1578830224910802, guid: 2030e0fa2aadfed4b9f99149cab54c72, type: 3}
@@ -7255,6 +7270,7 @@ GameObject:
   - component: {fileID: 3804566559952806479}
   - component: {fileID: 3815553508629606367}
   - component: {fileID: 3815553508629606366}
+  - component: {fileID: 3815553508629606371}
   - component: {fileID: 3815553508629606364}
   - component: {fileID: 3815553508629606368}
   - component: {fileID: 3815553508629606369}
@@ -7280,7 +7296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _joystick: {fileID: 2033098771}
   _speed: 10
-  _importantGameObjects: {fileID: 1655109032}
 --- !u!54 &3815553508629606366
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7381,6 +7396,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e113678fed2b97141ba493c61c1e5118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3815553508629606371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3815553508629606363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4277196b4e1c42143affcff6b430b036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _importantSceneObjects: {fileID: 1655109032}
 --- !u!33 &3866480971609072841
 MeshFilter:
   m_ObjectHideFlags: 0
