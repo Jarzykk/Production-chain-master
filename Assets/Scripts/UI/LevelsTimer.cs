@@ -12,6 +12,7 @@ public class LevelsTimer : MonoBehaviour
     private float _secondsCount;
     private int _minutes;
     private int _seconds;
+    private bool _timerIsRunning = true;
     private LevelsData _levelsData;
 
     public event UnityAction TimerRanOut;
@@ -46,7 +47,7 @@ public class LevelsTimer : MonoBehaviour
 
     private IEnumerator TimerCoroutine()
     {
-        while(_secondsCount >= 0)
+        while(_secondsCount >= 0 && _timerIsRunning == true)
         {
             _secondsCount -= Time.deltaTime;
 
@@ -74,5 +75,6 @@ public class LevelsTimer : MonoBehaviour
     private void StopTimer()
     {
         StopCoroutine(TimerCoroutine());
+        _timerIsRunning = false;
     }    
 }
